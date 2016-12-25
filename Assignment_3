@@ -1,0 +1,175 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Dot_Net_Project_2
+{
+    //base class
+    public class Student
+    {
+
+        public uint student_Id;
+        public String Name;
+        protected String Major;
+
+        public void fee(int x)
+        {
+            Console.WriteLine("course fee without tax is:" + x);
+        }
+
+        public void fee(int y, int z)
+        {
+            Console.WriteLine("Total course fee with tax is:" + (y + z));
+        }
+
+        public string getstddetails()
+        {
+            Console.WriteLine("Enter student_Id:");
+            student_Id = Convert.ToUInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter Student name:");
+            Name = Console.ReadLine();
+
+            Console.WriteLine("Enter Degree Major:");
+            Major = Console.ReadLine();
+
+            return Name;
+
+        }
+
+        // overridden  method
+        public virtual string AVcourse()
+        {
+
+            // For Array list size grows automatically and It can contain elements of any datatype
+            ArrayList subjects = new ArrayList();
+            Console.WriteLine("List of available course");
+            subjects.Add("DBMS");
+            subjects.Add("Java");
+            subjects.Add("NW security");
+            subjects.Add("No of available course");
+            subjects.Add(50);
+            foreach (var sub in subjects)
+                Console.WriteLine(sub);
+            return null;
+        }
+    }
+
+    // Derived class1
+    public class Course : Student
+    {
+
+        //overriding method.
+        public override string AVcourse()
+        {
+            base.AVcourse();
+            Console.WriteLine("Enter the course name to be registered:");
+            String course1 = Console.ReadLine();
+            return course1;
+        }
+
+    }
+
+    // Derived class2
+    //main method
+    public class Registrattion : Student
+    {
+
+
+        public static void Main(string[] args)
+
+        {
+            Registrattion p1 = new Registrattion();
+            p1.getstddetails();
+            Student p2 = new Course();
+            string subentered = p2.AVcourse();
+            string stringToCheck = subentered;
+           
+            //Array declaration and initialization
+            string[] stringArray = { "DBMS" };
+            foreach (string str in stringArray)
+            {
+                if (str.Equals(stringToCheck))
+                {
+                    Console.WriteLine(str + " course is available ");
+                    Console.ReadLine();
+                }
+
+                else
+                {
+                    Console.WriteLine("Course is not available");
+                    Console.ReadLine();
+                }
+            }
+           
+            //method overloading
+            p1.fee(1000);
+            p1.fee(1000, 150);
+
+            
+            /*implentation stringbuffer with while
+            StringBuilder is a dynamic object that allows you to expand the number of characters in the string. 
+            It doesn't create a new object in the memory but dynamically expands memory to 
+            accommodate the modified string.*/
+            int i = 1;
+            while (i <= 2)
+            {
+                StringBuilder sb = new StringBuilder("Hello", 100);
+
+                if (i == 1)
+
+                {
+                    sb.Append("your course");
+                    sb.AppendLine(" is registered");
+                    Console.WriteLine(sb);
+                }
+                else
+                {
+
+                }
+                i++;
+            }
+
+            
+            //Hash table 
+            Hashtable ht = new Hashtable();
+            ht.Add(1, "DBMS");
+            ht.Add(2, "JAVA");
+            ht.Add(3, "N/W");
+
+            foreach (var key in ht.Keys)
+                Console.WriteLine("Key:{0}, Value:{1}", key, ht[key]);
+
+
+            //generics allows us to design classes and methods decoupled from datatypes
+
+            bool b = myequal<int>(10, 10);
+            bool b2 = myequal<string>("Raj", "Raj");
+            if (b==true && b2==true)
+            {
+                Console.WriteLine("integer values are compared and are equal");
+                Console.WriteLine("striing values are compared");
+            }
+             else
+            {
+
+            }
+            Console.ReadLine();
+        }
+
+        public static bool myequal<G>(G value1, G value2)
+        {
+            return value1.Equals(value2);
+        }
+    }
+
+ }
+
+
+
+
+
+
