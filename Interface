@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Interfaceprogram
+{
+    interface Iprint
+    {
+        void raj();
+    }
+
+    interface Ifax : Iprint
+    {
+        void raj2();
+    }
+    public class machine : Ifax
+    {
+        public void raj()
+        {
+            Console.WriteLine("kumar");
+        }
+        public void raj2()
+        {
+            Console.WriteLine("kumar2");
+        }
+
+    }
+    class Program
+    {
+
+        public static void Main(string[] args)
+        {
+            machine M = new machine();
+            M.raj();
+            M.raj2();
+
+        }
+    }
+}
