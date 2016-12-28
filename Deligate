@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace basicdeligateprgm
+{
+    public delegate void del(string name);
+    class Program
+    {
+
+        public static void Main(string[] args)
+        {
+            del D = new del(method);
+            D("code successful");
+        }
+        public static void method(string name)
+        {
+            Console.WriteLine(name);
+        }
+    }
+}
