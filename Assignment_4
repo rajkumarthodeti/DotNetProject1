@@ -1,0 +1,77 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace myabstract_class
+{
+    class Program
+    {
+      
+        public static void Main(string[] args)
+        {
+            repository s1 = new student();
+            s1.studentid = 1299;
+            Console.WriteLine("Student1 Id={0}", s1.studentid);
+            s1.studentname = "raj";
+            Console.WriteLine("Student1 Name={0}", s1.studentname);
+            Console.WriteLine("Student1 attendance:");
+            int x = Convert.ToInt32(Console.ReadLine());
+            s1.attendance(x);
+
+            repository s2= new student();
+            s2.studentid = 1300;
+            Console.WriteLine("Student2 Id={0}", s2.studentid);
+            s2.studentname = "kumar";
+            Console.WriteLine("Student2 Name={0}", s2.studentname);
+            Console.WriteLine("Student2 attendance:");
+            int y = Convert.ToInt32(Console.ReadLine());
+            s2.attendance(y);
+            Console.WriteLine("Minimum required attendance for semister is {0}",s2.Semhours);
+            Console.ReadLine();
+        }
+    }
+    public abstract class repository
+    {
+
+        int _semhours = 70;
+ 
+        public int Semhours
+        {
+            get
+            {
+                return this._semhours;
+            }
+        }
+
+        public int studentid { set; get; }
+       public string studentname { set; get; }
+
+        public abstract void attendance(int stda);
+   
+
+    } 
+
+
+    public class student: repository
+
+    {
+
+
+        public override void attendance(int stda)
+        {
+           if(stda<70)
+            {
+                Console.WriteLine("Student has not met required attadance for semister");
+            }
+           else if(stda>75)
+            {
+                Console.WriteLine("Student met required attadance for semister");
+            }
+        }
+
+
+    }
+}
