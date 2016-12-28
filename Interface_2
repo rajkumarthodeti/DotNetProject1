@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Interface_explict
+{
+
+    //we cannot use acess modifier with i)explict interfcae implemention and ii)we need to use 
+    //"interface name" before method name (eg void Iprint1.print())
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            child c1 = new child();
+            //c1.print();//here it is ambigoius which method is called
+
+            ((Iprint1)c1).print();//here it refers to print method of interface "Iprint1"
+            ((Iprint2)c1).print();//here it refers to print method of interface "Iprint2"
+
+            //or
+
+            Iprint1 p1 = new child();//here it refers to print method of interface "Iprint1"
+            p1.print();
+            Iprint2 p2 = new child();//here it refers to print method of interface "Iprint2"
+            p2.print();
+
+            Console.ReadLine();
+        }
+    }
+
+    interface Iprint1
+    {
+        void print();
+    }
+
+    interface Iprint2
+    {
+        void print();
+    }
+
+    class child :Iprint1,Iprint2
+    {
+         void Iprint1.print()//now class child is saib to ne explictly implementing interface "Iprint1"
+        {
+        Console.WriteLine("print interface1");
+        }
+
+        void Iprint2.print()//now class child is saib to ne explictly implementing interface "Iprint2"
+        {
+            Console.WriteLine("print interface2");
+        }
+    }
+
+
+}
