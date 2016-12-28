@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// Interface only contains declarations of method, events & properties but not fields(parameters).
+//An Interface can be implement implicitly or explicitly.
+//An Interface cannot include private members.All the members are public by default.
+namespace Interface
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Iprint I1 = new child();//interface refernce to its derived object
+            I1.printname1();
+            Ifax I2 = new child();//interface refernce to its derived object
+            I2.printname2();
+            child c1 = new child();//instantiation of child class object
+            c1.printname1();
+            c1.printname2();
+            Console.ReadLine();
+        }
+    }
+
+
+
+    interface Iprint
+    {
+     void printname1();
+    }
+
+    interface Ifax
+    {
+        void printname2();
+    }
+    class child:Iprint,Ifax
+    {
+       public void printname1()
+        {
+            Console.WriteLine("Ineterface implementation");
+        }
+
+        public void printname2()
+        {
+            Console.WriteLine("Ineterface implementation");
+        }
+    }
+
+
+}
+
