@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Myacessmodifiers
+{
+    class parent
+    {
+        private int x=10;//private access with in class
+        public string name="raj";//public anywhere you can acess
+        protected float f=10.0f;// protected can acess by inside class and its derived class
+
+
+    }
+
+    class child :parent
+    {
+        
+
+       public static void Main(string[] args)
+        {
+            child p = new child();
+            //Console.WriteLine(p.x);////private access with in class
+            Console.WriteLine(p.name);
+            Console.WriteLine(p.f);
+            Console.ReadLine();
+
+
+        }
+
+    }
+}
