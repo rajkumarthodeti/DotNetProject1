@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyLoops
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           int[] raj = new int[4];
+
+            raj[0] = 10;
+            raj[1] = 20;
+            raj[2] = 30;
+            raj[3] = 40;
+
+            //foreach its not required to mention lenghth of an array
+            Console.WriteLine("output of foreach loop");
+
+            foreach (int a in raj)
+            {
+                Console.WriteLine(a);
+            }
+
+
+            //for loop its required to mention lenghth of an array otherwise CE
+            Console.WriteLine("output of for loop");
+            for (int i=0; i<raj.Length;i++)
+            {
+                Console.WriteLine(raj[i]=i+1);
+                continue;
+                
+
+            }
+
+            Console.WriteLine("output of while loop");
+            int j = 0;
+
+            while(j<raj.Length)
+            {
+                Console.WriteLine(raj[j] = j + 1);
+
+                j++;
+            }
+
+            //using continue keyword in a loop
+
+            Console.WriteLine("output of for loop using continue keyword ");
+            for (int a=0;a<10;a++)
+
+            {
+                if (a%2==0)
+                    continue;
+                Console.WriteLine(a + " is an odd number");
+                
+                
+            }
+
+            //using break keyword in a loop
+            Console.WriteLine("output of for loop using break keyword ");
+            for (int b = 0; b < 10; b++)
+
+            {
+                if (b % 2 == 1)
+                    break;
+                Console.WriteLine(b + " is an even number");
+
+
+            }
+
+            Console.ReadLine();
+        }
+    }
+}
