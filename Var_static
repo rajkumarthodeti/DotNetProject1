@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplicationExceptionhandling
+{
+    class Task4
+    {
+      
+        public static String name;
+        public void displayName()
+        {
+            Console.WriteLine("Display Function and Name = " + name);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            try
+            {
+                var varType = 10;
+                Console.WriteLine("Type of var is casted to " + varType.GetType());
+                int? nullType=null; //can assign null               
+                Task4 t = new Task4();
+                // normal variables, methods , properties are accesible via objects.
+                t.displayName(); //number will be ""
+                Task4.name = "RajKumar"; // have to access using Class Name
+                t.displayName();
+
+            }
+            catch
+            {
+               //if something wrong happens in try block
+                Console.WriteLine("Catch Block");
+            }
+
+            finally
+            {
+                Console.WriteLine("Finally Block will always get executed");
+            }
+        }
+    }
+}
