@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace List_1_collections
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Student> Std = new List<Student>();
+            Std.Add(new Student() { stdname = "ramu", Id = 24510, Marks = 90 });
+            Std.Add(new Student() { stdname = "rajesh", Id = 24511, Marks = 80 });
+            Std.Add(new Student() { stdname = "rakesh", Id = 24522, Marks = 95 });
+            Student.Grade(Std);
+            Console.ReadLine();
+
+        }
+    }
+
+    class Student
+    {
+
+        public string stdname { get; set; }
+        public int Id { get; set; }
+        public int Marks { get; set; }
+
+
+
+        public static void Grade(List<Student> stdlist)
+        {
+            foreach (Student STD in stdlist)
+            {
+                if (STD.Marks >= 90)
+                {
+                    Console.WriteLine("Studentname={0},\nStudentID={1},\nStudentMarks={2}", STD.stdname,STD.Id,STD.Marks+ " \nGrade:Distinction");
+                }
+
+            }
+        }
+    }
+
+}
