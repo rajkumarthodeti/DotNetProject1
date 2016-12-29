@@ -1,0 +1,60 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Array_ArrayList
+{
+    public class Program
+    {
+
+
+
+       public static void Main(string[] args)
+        {
+        ArrayList myarray = new ArrayList();
+        myarray.Add(1);
+        myarray.Add("raj");
+
+       ArrayList myarray2 = new ArrayList();
+            myarray2.Add(2);
+            myarray2.Add("kumar");
+
+
+            // using AddRange() 
+
+            myarray.AddRange(myarray2);
+
+            foreach (var x in myarray)
+                Console.WriteLine("Added Array elements val={0}", x);
+
+            //using Insert()
+
+            myarray.Insert(0, "New element inserted at index 0");
+            myarray.Insert(3, 100);
+
+            foreach (var y in myarray)
+                Console.WriteLine("Inserted Array elements val={0}", y);
+
+            //Use the InsertRange() method 
+            //to insert all the values from another collection into ArrayList at the specfied index.
+
+            myarray.InsertRange(0,myarray2);
+
+            foreach (var z in myarray)
+                Console.WriteLine("Inserted range at Index 0 Array elements val={0}", z);
+
+            myarray.Remove("raj");
+            foreach (var z in myarray)
+                Console.WriteLine("Removed  Array elements val={0}", z);
+
+            myarray.RemoveRange(0, 2);//Removes two elements starting from 1st item (0 index)
+            foreach (var z in myarray)
+                Console.WriteLine("Removed from 0 to 2 Array elements val={0}", z);
+
+            Console.ReadLine();
+        }
+    }
+}
