@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Deligate_1
+{
+    //A deligate is a type safe function pointer.It holds reference to function pointer
+    //The signature of the deligate must match with signature of the function deligate points 
+    //to, otherwise you get a compiler error so its called type safe.
+
+    public delegate void mydeligate(string Name);//Deligate
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            mydeligate del1 = new mydeligate(printdeligate);//instantiation of deligate construcator and passing the method name
+            //as parameter to deligate constructor
+            del1("my first deligate program");
+            Console.ReadLine();
+
+        }
+
+        public static void printdeligate(string name)
+        {
+            Console.WriteLine(name);
+        }
+
+
+    }
+
+    
+
+}
