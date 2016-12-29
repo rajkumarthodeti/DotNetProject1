@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace my_method_parameters
+{
+    class Program
+    {
+
+       public static void Main(string[] args)
+        {
+            int p = 0;
+            int a = 0;
+            int sum1 = 0;
+            int[] myarray = new int[2];
+            myarray[0] = 100;
+            myarray[1] = 200;
+
+            myvalue(p);//pass by vlaue
+            myref(ref a);//pass by reference
+            myout(10,20, out sum1);//out parameter
+            //myparamsmethod();
+            myparamsmethod(1,2,3,myarray);//using paramsmethod parameter
+
+
+            Console.WriteLine(p);//output is 0
+            Console.WriteLine(a);//output is 100
+            Console.WriteLine("Sum1={0}",sum1);
+            Console.ReadLine();
+
+
+        }
+
+       public static void myvalue(int p)
+        {
+            p = 100;
+        }
+
+        public static void myref(ref int j)
+        {
+            j = 100;
+        }
+
+        public static void myout(int x,int y,out int sum1)
+        {
+            sum1 = x + y;
+        }
+
+        public static void myparamsmethod(int s, int r, int u, params int [] myarray)////using paramsmethod parameter
+        {
+            Console.WriteLine("there are {0} elements", myarray.Length);
+            foreach(int q in myarray)
+            {
+                Console.WriteLine(q);
+            }
+
+        }
+    }
+}
