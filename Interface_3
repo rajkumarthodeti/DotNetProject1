@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Interface_inheritance
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            child c1 = new child();
+            c1.customer();
+            c1.customerid();
+            Console.ReadLine();
+
+        }
+    }
+
+    interface Iprint1
+    {
+        void customer();
+    }
+
+    interface Iprint2: Iprint1
+    {
+        void customerid();
+    }
+
+    class child:Iprint2
+    {
+        public void customer()
+        {
+            Console.WriteLine("Customer name");
+        }
+
+        public void customerid()
+        {
+            Console.WriteLine("Customer Id");
+        }
+    }
+}
