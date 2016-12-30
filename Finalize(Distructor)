@@ -1,0 +1,62 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Exceptionhandling_2
+
+{
+    class A
+    {
+        public A()
+        {
+            Console.WriteLine("Creating A");
+        }
+        ~A()//Finalizers are like destructors. they will get called whenever the object goes out of scope. 
+        {
+            Console.WriteLine("Destroying A");
+        }
+    }
+
+    class B : A
+    {
+        public B()
+        {
+            Console.WriteLine("Creating B");
+        }
+        ~B()
+        {
+            Console.WriteLine("Destroying B");
+        }
+
+    }
+    class C : B
+    {
+        public C()
+        {
+            Console.WriteLine("Creating C");
+        }
+
+        ~C()
+        {
+            Console.WriteLine("Destroying C");
+        }
+    }
+    class App
+    {
+        public static void Main()
+        {
+            C c = new C();
+            Console.WriteLine("Object Created ");
+            Console.WriteLine("Press enter to Destroy it");
+            Console.ReadLine();
+            c = null;
+            //GC.Collect();
+            Console.Read();
+        }
+
+    }
+}
+    
