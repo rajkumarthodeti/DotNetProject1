@@ -1,0 +1,48 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Exceptionhandling_1
+{
+    class Program
+    {
+
+        public static void Main(string[] args)
+        {
+            StreamReader Str = null;
+
+            try
+            {
+                 Str = new StreamReader(@"C:\Dot_Net_Training\Mydatabase.txt");
+                Console.WriteLine(Str.ReadToEnd());
+                
+            }
+
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("Please check if file={0} exists", ex.FileName);
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            finally
+            {
+                if(Str != null)
+                {
+                    Str.Close();
+                    Console.WriteLine("Finally Block");
+                }
+
+
+            }
+            Console.ReadLine();
+        }
+
+    }
+}
