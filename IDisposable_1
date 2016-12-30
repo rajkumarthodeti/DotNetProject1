@@ -1,0 +1,57 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Exceptionhandling_2
+
+{
+    class Program: IDisposable//IDisposable is used release unmanaged resources 
+    {
+
+        public void Dispose()
+        {
+            Console.WriteLine("Dispose method is called");
+        }
+
+        public static void Main(string[] args)
+        {
+        
+        //manged resource cleaned by GC
+            StreamReader Str = null;
+
+            try
+            {
+                //Unmanged resource is resouce that is outside .net frame work
+                Str = new StreamReader(@"C:\Dot_Net_Training\Mydatabase.txt");
+                Console.WriteLine(Str.ReadToEnd());
+
+            }
+
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("Please check if file={0} exists", ex.FileName);
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            finally
+            {
+                if (Str != null)
+                {
+                    Str.Dispose();
+                    Console.WriteLine("Finally Block");
+                }
+
+
+            }
+            Console.ReadLine();
+        }
+
+    }
+}
