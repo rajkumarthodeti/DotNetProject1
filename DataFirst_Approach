@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace code_first_console
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            using (var context = new AdventureWorks2012Entities())
+            {
+
+                var query = (from b in context.Products orderby b.ProductID select b).Take(10);
+                Console.WriteLine("ProductID\t\tName\t\tProductNumber\t\tSafetyStockLevel\t\tcolor");
+
+                foreach (var item in query)
+                {
+                    
+                    Console.WriteLine(String.Format("{0,5}",item.ProductID) + String.Format("{0,30}",item.Name) 
+                    + String.Format("{0,13}", item.ProductNumber)+ String.Format("{0,20}", item.SafetyStockLevel)+ String.Format("{0,33}", item.Color));
+                }
+
+                Console.WriteLine("Enter the productid: ");
+                var x = Convert.ToInt32(Console.ReadLine());
+                var pp=context.Products.Find(x);
+                Console.WriteLine("ProductID\t\tName\t\tProductNumber\t\tSafetyStockLevel\t\tcolor");
+                Console.WriteLine(String.Format("{0,5}", pp.ProductID) + String.Format("{0,30}", pp.Name)
+                    + String.Format("{0,13}", pp.ProductNumber) + String.Format("{0,20}", pp.SafetyStockLevel) + String.Format("{0,33}", pp.Color));
+                Console.WriteLine("Press any key to exit...");
+                Console.ReadKey();
+            }
+
+        }
+    }
+}
+
+
+
