@@ -1,0 +1,117 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace List_1
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            customer c1 = new customer()
+            {
+                custid = 24510,
+                custname = "Raja",
+                orderid = 5200,
+                depname = "electronic"
+            };
+            customer c2 = new customer()
+            {
+                custid = 24511,
+                custname = "Rama",
+                orderid = 5201,
+                depname = "electronic"
+            };
+
+
+
+            customer c3 = new customer()
+            {
+                custid = 24512,
+                custname = "sita",
+                orderid = 5202,
+                depname = "electronic"
+            };
+
+            customer c4 = new customer()
+            {
+                custid = 24513,
+                custname = "sam",
+                orderid = 5205,
+                depname ="electronic"
+            };
+            List<customer> l1 = new List<customer>();
+            l1.Add(c1);
+            l1.Add(c2);
+            l1.Add(c3);
+            l1.Add(c4);
+
+            foreach(customer cust in l1)
+            {
+                Console.WriteLine("custid={0},custname={1},orderid={2},depname={3}", 
+                    cust.custid, cust.custname, cust.orderid,cust.depname);
+            }
+
+            if (l1.Contains(c2))
+            {
+                Console.WriteLine("C2 object exist ");
+            }
+
+            else
+            {
+                Console.WriteLine("C2 object doesnot exist ");
+            }
+
+
+            if (l1.Exists(mycust=>mycust.custname.StartsWith("s")))
+                //exits function serach with condition if condition met return true else false
+            {
+                Console.WriteLine("Name strats with S exits ");
+            }
+
+            else
+            {
+                Console.WriteLine("Name strats with S  doesnot exits ");
+            }
+
+
+            customer FF = l1.Find(custx => custx.custid > 24510);//Lambda expression eg (x=>,x.id>10)
+            //Find()::If condition met returns first record in list
+            Console.WriteLine("custid={0},custname={1},orderid={2},depname={3}",
+         FF.custid, FF.custname, FF.orderid, FF.depname);
+
+            customer FL = l1.FindLast(custx => custx.custid > 24510);
+            //FindLast()::If condition met returns last record in list
+            Console.WriteLine("custid={0},custname={1},orderid={2},depname={3}",
+         FL.custid, FL.custname, FL.orderid, FL.depname);
+
+
+           List<customer> FA = l1.FindAll(custx => custx.custid > 24510);
+            //FindAll()::If condition met returns All record in list
+            foreach (customer custFa in FA)
+            {
+                Console.WriteLine("custid={0},custname={1},orderid={2},depname={3}",
+             custFa.custid, custFa.custname, custFa.orderid, custFa.depname);
+            }
+
+
+            Console.ReadLine();
+        }
+
+        class customer:Deparment
+        {
+            public int custid { get; set; }
+            public string custname { get; set; }
+            public int orderid { get; set; }
+        }
+
+        class Deparment
+        {
+            public string depname { get; set; }
+        }
+    }
+
+}
+
