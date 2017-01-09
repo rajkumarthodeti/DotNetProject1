@@ -1,0 +1,96 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Dictionary_2
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            customer c1 = new customer()
+            {
+                custid = 24510,
+                custname = "Raja",
+                orderid = 5200
+            };
+            customer c2 = new customer()
+            {
+                custid = 24511,
+                custname = "Rama",
+                orderid = 5201
+            };
+
+            customer c3 = new customer()
+            {
+                custid = 24512,
+                custname = "sita",
+                orderid = 5202
+            };
+
+            Dictionary<int, customer> d1 = new Dictionary<int, customer>();
+            d1.Add(c1.custid, c1);
+            d1.Add(c2.custid, c2);
+            d1.Add(c3.custid, c3);
+            foreach (KeyValuePair<int, customer> kvp1 in d1)
+            {
+                Console.WriteLine("key={0}", kvp1.Key);
+                customer cust = kvp1.Value;
+                Console.WriteLine("custid={0},custname={1},orderid={2}", cust.custid, cust.custname, cust.orderid);
+                Console.WriteLine("--------------------------------------------------");
+            }
+
+            Console.WriteLine("Total customers={0}", d1.Count());
+            //I want to find count where orderid>5200 how to do it
+            Console.WriteLine("Total customers orderid > 5200 is = {0}", d1.Count(kvp => kvp.Value.orderid > 5200));
+
+
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("converting array of objects to dicationary");
+            //coverting array of cutomers into dictinary
+            customer[] cust1 = new customer[3];
+            cust1[0] = c1;
+            cust1[1] = c2;
+            cust1[2] = c3;
+            Dictionary<int, customer> d2 = cust1.ToDictionary(cm => cm.custid, cm => cm);
+
+            foreach (KeyValuePair<int, customer> x in d1)
+            {
+                Console.WriteLine("key={0}", x.Key);
+                customer y = x.Value;
+                Console.WriteLine("custid={0},custname={1},orderid={2}", y.custid, y.custname, y.orderid);
+                Console.WriteLine("------------------------------------");
+            }
+
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("converting List to dicationary");
+            List<customer> L1 = new List<customer>();
+            L1.Add(c1);
+            L1.Add(c2);
+            L1.Add(c3);
+
+            Dictionary<int, customer> d3 = L1.ToDictionary(cm => cm.custid, cm => cm);
+
+            foreach (KeyValuePair<int, customer> x in d1)
+            {
+                Console.WriteLine("key={0}", x.Key);
+                customer y = x.Value;
+                Console.WriteLine("custid={0},custname={1},orderid={2}", y.custid, y.custname, y.orderid);
+                Console.WriteLine("------------------------------------");
+            }
+
+            Console.ReadLine();
+        }
+
+
+        class customer
+        {
+            public int custid { get; set; }
+            public string custname { get; set; }
+            public int orderid { get; set; }
+        }
+    }
+
+}
