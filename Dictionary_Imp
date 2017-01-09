@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Dictionary_1
+{
+    class Program
+    {
+
+        public static void Main(string[] args)
+        {
+            Student s1 = new Student()
+            {
+                StdId=1299,
+                StdFName = "Raj",
+                StdLName="kumar"
+
+            };
+
+            Student s2 = new Student()
+            {
+                StdId = 1300,
+                StdFName = "Ram",
+                StdLName = "reddy"
+
+            };
+
+            Student s3 = new Student()
+            {
+                StdId = 1301,
+                StdFName = "sita",
+                StdLName = "kumari"
+
+            };
+
+            Dictionary<int, Student> dic = new Dictionary<int, Student>();
+            dic.Add(s1.StdId, s1);
+            dic.Add(s2.StdId, s2);
+            dic.Add(s3.StdId, s3);
+            if(!dic.ContainsKey(s1.StdId))//checking whether is present already
+            {
+                dic.Add(s1.StdId,s1);
+            }
+
+            if (dic.ContainsKey(1309))//checks whether key value is present in dic if yes return true else false
+            {
+                Student std1 = dic[1309];
+                Console.WriteLine("std1={0},std1={1},std1={2}", std1.StdId, std1.StdFName, std1.StdLName);
+            }
+            else if (dic.ContainsKey(1301))
+            {
+                Student StdId1301 = dic[1301];
+                Console.WriteLine("stdId={0},StdFName={1},StdLName={2}", StdId1301.StdId, StdId1301.StdFName, StdId1301.StdLName);
+                Console.WriteLine("-------------------------------------------------------");
+            }
+                foreach (KeyValuePair<int,Student> kvp in dic)//accessing keys and values at atime using key value pair
+              {
+                Console.WriteLine("key={0}",kvp.Key);
+                Student Stdx=kvp.Value;
+                Console.WriteLine("stdId={0},StdFName={1},StdLName={2}", Stdx.StdId, Stdx.StdFName, Stdx.StdLName);
+                Console.WriteLine("-------------------------------------------------------");
+            }
+
+            Console.WriteLine("Using Var\n");
+            foreach (var kvp in dic)//accessing keys and values at atime using var
+            {
+                Console.WriteLine("key={0}", kvp.Key);
+                Student Stdx = kvp.Value;
+                Console.WriteLine("stdId={0},StdFName={1},StdLName={2}", Stdx.StdId, Stdx.StdFName, Stdx.StdLName);
+                Console.WriteLine("-------------------------------------------------------");
+            }
+
+            foreach (int kvp in dic.Keys)//accessing  only keys 
+            { 
+                Console.WriteLine("key={0}", kvp);
+
+            }
+
+            foreach (Student kvp in dic.Values) //accessing  only values in dictionary 
+            {
+                Console.WriteLine("stdId={0},StdFName={1},StdLName={2}", kvp.StdId, kvp.StdFName, kvp.StdLName);
+
+            }
+
+
+            Console.ReadLine();
+        }
+    }
+
+    class Student
+    {
+        public int StdId { get; set; }
+        public string StdFName { get; set; }
+        public string StdLName { get; set; }
+
+    }
+}
